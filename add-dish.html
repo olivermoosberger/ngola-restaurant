@@ -4,8 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>add dishes for best African flavours</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header></header>
+        <div class="header-container">Bangola exquisite Restaurant</div>
+ <nav>
+    <ul>
+        <li><a href="index.html" class="nav-link" >Home</a></li>
+        <li><a href="menu.html" class="nav-link" >Menu</a></li>
+        <li><a href="add-dish.html" class="nav-link active" >Add Dish</a></li>
+    
+    </ul>
+ </nav>
+    </header>
+    <main>
+        <div class="flex-wrap" >
+            <h1>
+                Add Your Dish To The Bangola Kingdom Menu
+            </h1>
+            <div class="form-container">
+                <form id="add-dish-form">
+                    <div class="form-group" >
+                        <label for="dish-name">Dish Name:</label>
+                        <input type="text" id="dish-name" name="dish-name" placeholder="biriyani" required>
+                    </div> <div class="form-group" >
+                        <label for="originCountry"> Country:</label>
+                        <input type="text" id="originCountry" name="originCountry" placeholder="Kenya" value="African">
+            </div> 
+            <div class="form-group" >
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="A delicious blend of spices and flavors, this dish is a true representation of the rich culinary heritage of Africa. The tender meat is marinated in a mixture of aromatic spices, then slow-cooked to perfection, resulting in a mouthwatering dish that is both hearty and flavorful. Served with a side of fluffy rice or warm bread, this dish is sure to satisfy your cravings for authentic African cuisine." required></textarea>
+
+            </div>
+            <div  class="form-group" >
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" placeholder="15.99" required>
+
+            </div>
+            <div class="form-group" id="formFeedback" >
+</div>        
+    <button type="submit" class="submit-btn">Add Dish</button>
+                </form>
+            </div>
+            <div>
+                <h3>Recently Added Dishes</h3>
+                <div id="recently-added-grid" class="card-grid" ></div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <p> 2026 Bangola Exquisite Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script src="js/storage.js" ></script>
+    <script src="js/add-dish.js" ></script>
+    <script src="js/ui.js" ></script>
     
 </body>
 </html>
