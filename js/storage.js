@@ -17,7 +17,7 @@ catch (error) {
   console.error('Error saving dishes to localStorage:', error);
 } 
 
-* Loads dishes from localStorage and returns them as an array. If no dishes are found, returns an empty array.
+* Takes dishes from localStorage and returns them as an array. If no dishes are found, returns an empty array.
 
 export function loadDishes() { try {
   const dishes = localStorage.getItem(STORAGE_KEY);
