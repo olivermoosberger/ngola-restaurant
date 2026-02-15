@@ -145,12 +145,16 @@ footer {
 
 .form-container {
     max-width: 400px;
-    margin: 20px auto;
+    margin-left:0 ;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 20px;
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #f59229;
+    border: 1px solid #c80e0e;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(184, 14, 14, 0.1);
+
 }
 
 .form-group {
@@ -213,7 +217,8 @@ footer {
     height: 200px;
     background-size: cover;
     background-position: center;
-    border-bottom: 3px solid var(--accent-color);
+    border-bottom: 3px solid red; 
+    align-items: center;
 }
 
 
