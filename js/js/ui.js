@@ -1,23 +1,22 @@
 /**
- *  Functions for displaying and managing dishes in the Bangola Community Restaurant app.
  *  Handles rendering dishes, showing dish details, and managing user interactions with the UI.
  */
 import { loadDishes } from './storage.js';
 
 /**
- * Renders the list of dishes on the page.
+ * Renders  list of dishes on the page.
  */
 export function renderDishes() {
   const dishes = loadDishes();
   const dishesContainer = document.getElementById('dishes-container');
   
-  // Check if container exists
+  // Checks if container exists
   if (!dishesContainer) {
     console.error('Dishes container not found');
     return;
   }
   
-  // Handle empty dishes array
+  // Handles empty dishes array
   if (!dishes || dishes.length === 0) {
     dishesContainer.innerHTML = '<p style="color: gray;">No dishes available. Please add a dish.</p>';
     return;
@@ -35,7 +34,7 @@ export function renderDishes() {
   
   dishesContainer.innerHTML = dishesHTML;
   
-  // Add event listeners to the "View Details" buttons for each dish card
+  //  Event listeners 
   document.querySelectorAll('.view-details-btn').forEach(button => {
     button.addEventListener('click', (event) => {
       const index = event.target.getAttribute('data-index');
@@ -45,7 +44,7 @@ export function renderDishes() {
 }
 
 /**
- * Displays the details of a dish in a modal or separate section.
+ *  Details of a dish in a modal or separate section.
  * @param {number} index - The index of the dish to display
  */
 export function showDishDetails(index) {
@@ -58,7 +57,7 @@ export function showDishDetails(index) {
     return;
   }
   
-  // You can customize this to show in a modal or alert
+  //  show in a modal or alert
   alert(`Dish Details:
   
 Name: ${dish.name}
@@ -68,7 +67,7 @@ Price: ${dish.price || 'Not specified'}`);
 }
 
 /**
- * Sets active state for navigation links
+ *  Active state for navigation links
  * @param {string} currentPage - The current page identifier (href value)
  */
 export function setActiveNav(currentPage) {
