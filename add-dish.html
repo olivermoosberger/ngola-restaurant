@@ -3,504 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangola Kingdom African Traditional Flavours · Add Dish</title>
-    <style>
-     
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            border-radius: 12px;
-        }
-
-        body {
-            background: #f2d09d;  
-            color: #2e241f;
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem 1rem;
-            border-radius: 12px;
-        }
-
-        .kingdom-card {
-            max-width: 1000px;
-            width: 100%;
-            background: #f5d68d;
-            box-shadow: 0 20px 35px -10px rgba(120, 70, 30, 0.3);
-            overflow: hidden;
-            border: 1px solid #dbaa7a;
-        }
-
-       
-        .header-bango {
-            background:#d78425;  
-            padding: 1.5rem 2rem;
-            border-bottom: 4px solid #e5944d;  
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-text {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffefd1;
-            text-shadow: 2px 2px 0 #4f3723;
-        }
-
-        .nav-africa {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-africa a {
-            color: #fff6e0;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 0.3rem 0.8rem;
-            border-radius: 30px;
-            background: rgba(112, 56, 3, 0.822);
-        }
-
-        .nav-africa a:hover {
-            background: #e5944d;  
-            color: #2b1b0f;
-        }
-
-    
-        .main-heading {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color:#f1a248;  
-            margin: 2rem 0 0.5rem 0;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-
-        .sub-heading {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: #e5944d;  
-            margin: 0.5rem 0 2rem 0;
-            border-bottom: 2px dashed #e5944d;
-            padding-bottom: 1rem;
-        }
-
-        
-        .feature-list {
-            background: #eedbcb;
-            border-radius: 40px;
-            padding: 1.8rem;
-            margin: 1rem 2rem 2rem 2rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            font-size: 1.2rem;
-            padding: 0.9rem 1.5rem;
-            background: #fffcf0;
-            border-radius: 50px;
-            margin-bottom: 0.8rem;
-            border-left: 6px solid #e5944d;  
-        }
-
-        .feature-item strong {
-            color: #7b4f35;  
-            min-width: 160px;
-        }
-
-        .example {
-            color: #b16f3a;
-            font-style: italic;
-        }
-
-        
-        .simple-form {
-            padding: 0 2rem 2rem 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #7b4f35;  
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-
-        .required-star {
-            color: #e5944d;  
-            font-size: 1.2rem;
-            margin-left: 4px;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            background: #fffbf5;
-            border: 2px solid #dc9c5b;  
-            border-radius: 30px;
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
-            font-family: inherit;
-            color: #2e241f;
-        }
-
-        textarea {
-            border-radius: 25px;
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #e5944d;  
-            box-shadow: 0 0 0 3px orange;
-        }
-
-        .hint {
-            font-size: 0.9rem;
-            color: #b16f3a;  
-            margin-top: 0.3rem;
-            margin-left: 1rem;
-            font-style: italic;
-        }
-
-        .price-row {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .price-row input {
-            flex: 2;
-        }
-
-        .price-row select {
-            flex: 1;
-        }
-
-        
-        .add-button {
-            background: #e5944d;  
-            border: none;
-            color: #2b1b0f;
-            font-weight: 700;
-            font-size: 1.5rem;
-            padding: 1.2rem 2rem;
-            border-radius: 50px;
-    
-            
-          
-        }
-
-        .add-button:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #7b4f35;
-        }
-
-        
-        .recent-section {
-            background: #f5e5d5;
-            padding: 2rem 2rem;
-            border-top: 2px dashed #e5944d;
-            margin-top: 1rem;
-        }
-
-        .recent-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #7b4f35;  
-            margin-bottom: 1.2rem;
-        }
-
-        .dish-list {
-            background: #fffcf3;
-            border-radius: 25px;
-            padding: 1.2rem 1.5rem;
-            border-left: 6px solid #e5944d;  
-            min-height: 80px;
-        }
-
-        .dish-item {
-            padding: 0.8rem 0.5rem;
-            border-bottom: 1px dashed #dbaa7a;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dish-item:last-child {
-            border-bottom: none;
-        }
-
-        .dish-info {
-            font-weight: 600;
-            color: #7b4f35;  
-        }
-
-        .dish-price {
-            background: #e5944d;  
-            color: #2b1b0f;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-
-        .empty-message {
-            color: #b16f3a;
-            font-style: italic;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .storage-badge {
-            background: #dbaa7a;
-            color: #2b1b0f;
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            width: fit-content;
-            margin: 1rem auto 0.5rem;
-            border: 2px solid #f5c49e;
-            text-align: center;
-        }
-
-        .footer {
-            background: #7b4f35;  
-            color: #f5e5d5;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            border-top: 6px solid #e5944d;  
-        }
-
-        .copyright {
-            font-size: 1rem;
-        }
-
-        select {
-            appearance: none;
-            background-image: linear-gradient(45deg, transparent 50%, #7b4f35 50%);
-            background-size: 12px 12px;
-            background-position: right 1.5rem center;
-            background-repeat: no-repeat;
-        }
-    </style>
+    <title>Add Dish - Bangola Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="kingdom-card">
-
-        <div class="header-bango">
-            <div class="logo-area">
-                <span class="logo-text">BANGOLA KINGDOM AFRICAN FLAVOURS</span>
-                <div class="nav-africa">
-                    <a href="index.html">Home</a>
-                    <a href="menu.html">Menu</a>
-                </div>
-            </div>
-        </div>
-
-
-        <h1 class="main-heading">Heritage of African Taste</h1>
-        <div class="sub-heading">Share your African food taste</div>
-
-        <div class="feature-list">
-            <div class="feature-item">
-                <strong>FAMOUS DISH NAME</strong>
-                <span class="example">e.g. Jerk-Chicken, Jollof</span>
-            </div>
-            <div class="feature-item">
-                <strong>COUNTRY / REGION</strong>
-                <span class="example">African (general)</span>
-            </div>
-            <div class="feature-item">
-                <strong>TASTE / SPICES / STORY</strong>
-                <span class="example">spicy</span>
-            </div>
-        </div>
-
-        <div class="simple-form">
-            <form id="dishForm">
+    <header>
+        <div class="header-container">Bangola Exquisite African Restaurant</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="add-dish.html" class="nav-link active">Add Dish</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="flex-wrap">
+            <h1>Add Your Dish to the Kingdom</h1>
+            
+            <form id="add-dish-form" class="dish-form">
                 <div class="form-group">
-                    <label>FAMOUS DISH NAME <span class="required-star">*</span></label>
-                    <input type="text" id="dishName" placeholder="e.g. Biriani, Nyama Choma" required>
-                    <div class="hint">e.g. Biriani, Nyama Choma</div>
+                    <label for="dish-name">Dish Name:</label>
+                    <input type="text" id="dish-name" name="dish-name" placeholder="e.g. Nyama Choma, Jollof Rice..." required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label>COUNTRY / REGION</label>
-                    <select id="dishRegion">
-                        <option>Western Africa</option>
-                        <option>Eastern Africa</option>
-                        <option>Southern Africa</option>
-                        <option>Northern Africa</option>
-                        <option>Central Africa</option>
-                        <option selected>African (general)</option>
-                        <option>South Africa</option>
-                        <option>Nigeria</option>
-                        <option>Ghana</option>
-                        <option>Kenya</option>
-                        <option>Ethiopia</option>
-                        <option>Morocco</option>
+                    <label for="dish-description">DESCRIPTION - Describe the dish – flavour, tradition, occasion…</label>
+                    <textarea id="dish-description" name="dish-description" rows="4" 
+                        placeholder="Describe the flavours, cultural significance, when it's typically eaten..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dish-traditions">Traditions:</label>
+                    <input type="text" id="dish-traditions" name="dish-traditions" 
+                        placeholder="e.g. Wedding feast, Harvest celebration, Daily meal...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dish-occasion">Occasion:</label>
+                    <select id="dish-occasion" name="dish-occasion">
+                        <option value="Any occasion">Any occasion</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Daily meal">Daily meal</option>
+                        <option value="Celebration">Celebration</option>
+                        <option value="Religious">Religious ceremony</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label>TASTE / SPICES / STORY</label>
-                    <input type="text" id="dishTaste" placeholder="e.g. smoky, peri-peri, spicy, peanut" value="spicy, peanut">
-                </div>
-
-                <div class="form-group">
-                    <label>DESCRIPTION <span class="required-star">*</span></label>
-                    <textarea id="dishDesc" placeholder="Describe the dish – flavour, tradition, occasion..." required></textarea>
-                    <div class="hint">Describe the dish – flavour, tradition, occasion...</div>
-                </div>
-
-                <div class="form-group">
-                    <label>PRICE (WITH CURRENCY) <span class="required-star">*</span></label>
-                    <div class="price-row">
-                        <input type="text" id="dishPrice" placeholder="e.g. 85, 400" required>
-                        <select id="dishCurrency">
-                            <option>BTC (Bitcoin)</option>
-                            <option>KSh (Kenya)</option>
-                            <option>₦ (Naira)</option>
-                            <option>R (ZAR)</option>
-                            <option>GH₵ (Cedi)</option>
-                            <option>MAD (Dirham)</option>
-                            <option>USD $</option>
-                            <option>EUR €</option>
+                
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="dish-price">PRICE (WITH CURRENCY):</label>
+                        <input type="text" id="dish-price" name="dish-price" 
+                            placeholder="e.g. 85, 400" required>
+                    </div>
+                    
+                    <div class="form-group half">
+                        <label for="dish-currency">Currency:</label>
+                        <select id="dish-currency" name="dish-currency" required>
+                            <option value="USD">USD ($)</option>
+                            <option value="KES">KES (KSh)</option>
+                            <option value="ZAR">ZAR (R)</option>
+                            <option value="BTC">BTC (Bitcoin) ₿</option>
+                            <option value="NGN">NGN (₦)</option>
+                            <option value="GHS">GHS (₵)</option>
                         </select>
                     </div>
-                    <div class="hint">e.g. R85, KSh 400</div>
                 </div>
-
-                <button class="add-button" type="submit">Add your dish</button>
+                
+                <div class="price-examples">
+                    <small>Examples: R85, KSh 400, BTC (Bitcoin) ₿ 0.00015, $12.50</small>
+                </div>
+                
+                <button type="submit" class="submit-btn">Add your dish</button>
             </form>
-        </div>
-
-        <div class="recent-section">
-            <div class="recent-title">Recently added</div>
-            <div id="dishListContainer" class="dish-list"></div>
-            <div class="storage-badge">
-                <span id="storageCount">0</span> dishes saved
+            
+            <!-- Recently Added Section -->
+            
+                <h2>Recently added</h2>
+                <div id="recently-added-dishes" class="mini-grid">
+                    <!-- Dishes will be loaded here -->
+                    <p class="no-dishes">0 dishes saved</p>
+                </div>
+                <div class="kingdom-quote">
+                    <p class="quote-text">"Bangola Kingdom — taste the motherland, every bite tells a story."</p>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 2rem; font-style: italic; color: #d78425">
-                “Bangola Kingdom — taste the motherland, every bite tells a story.”
-            </div>
         </div>
-
-        <div class="footer">
-            <div class="copyright">© 2026 | Heritage on a plate</div>
-        </div>
-    </div>
-
+    </main>
     
+    <footer>
+        <p>Bangola Kingdom Restaurant — taste the motherland, every bite tells a story.</p>
+        <p>© 2026 | Heritage on a plate</p>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/home.js"></script>
     <script>
-        (function() {
-            const STORAGE_KEY = 'bangola_dishes';
-
-            function loadDishes() {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) {
-                    try {
-                        return JSON.parse(stored);
-                    } catch (e) {
-                        return [];
-                    }
-                }
-                return [
-                   
-                    { name: 'Biriani', region: 'African (general)', taste: 'nice · spicy, peanut', price: '1100', currency: 'KSh (Kenya)' }
-                ];
+        // Function to load and display recently added dishes
+        function loadRecentlyAdded() {
+            const container = document.getElementById('recently-added-dishes');
+            if (!container) return;
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Load dishes from localStorage
+            const dishes = loadDishes();
+            console.log('Loaded dishes:', dishes); // Debug log
+            
+            if (!dishes || dishes.length === 0) {
+                container.innerHTML = '<p class="no-dishes">0 dishes saved</p>';
+                return;
             }
-
-            function saveDishes(dishes) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(dishes));
-            }
-
-            function renderDishList() {
-                const dishes = loadDishes();
-                const container = document.getElementById('dishListContainer');
-                const countSpan = document.getElementById('storageCount');
-
-                if (!container) return;
-                if (countSpan) countSpan.innerText = dishes.length;
-
-                if (!dishes || dishes.length === 0) {
-                    container.innerHTML = '<div class="empty-message">No dishes yet. Add one above!</div>';
-                    return;
+            
+            // Get the 3 most recent dishes (sort by id which is timestamp)
+            const recentDishes = [...dishes].sort((a, b) => b.id - a.id).slice(0, 3);
+            
+            // Display each dish
+            recentDishes.forEach(dish => {
+                const card = document.createElement('div');
+                card.className = 'mini-card';
+                
+                // Format price with currency symbol
+                let priceDisplay = '';
+                switch(dish.currency) {
+                    case 'BTC':
+                        priceDisplay = `₿ ${dish.price}`;
+                        break;
+                    case 'KES':
+                        priceDisplay = `KSh ${dish.price}`;
+                        break;
+                    case 'ZAR':
+                        priceDisplay = `R ${dish.price}`;
+                        break;
+                    case 'USD':
+                        priceDisplay = `$${dish.price}`;
+                        break;
+                    case 'NGN':
+                        priceDisplay = `₦ ${dish.price}`;
+                        break;
+                    case 'GHS':
+                        priceDisplay = `₵ ${dish.price}`;
+                        break;
+                    default:
+                        priceDisplay = `$${dish.price}`;
                 }
-
-                let html = '';
-                const reversed = [...dishes].reverse();
-                reversed.forEach(dish => {
-                    const priceStr = dish.currency ? `${dish.price} ${dish.currency}` : dish.price;
-                    const region = dish.region || 'African';
-                    const taste = dish.taste ? ` · ${dish.taste}` : '';
-                    html += `
-                        <div class="dish-item">
-                            <span class="dish-info">${dish.name} (${region})${taste}</span>
-                            <span class="dish-price">${priceStr}</span>
-                        </div>
+                
+                card.innerHTML = `
+                    <strong>${dish.name || 'Untitled'}</strong>
+                    <span>${priceDisplay}</span>
+                    <small>${dish.occasion || 'Any occasion'}</small>
+                `;
+                container.appendChild(card);
+            });
+            
+            // If less than 3 dishes, add placeholder cards
+            if (dishes.length < 3) {
+                for (let i = dishes.length; i < 3; i++) {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'mini-card placeholder';
+                    placeholder.innerHTML = `
+                        <strong>—</strong>
+                        <span>—</span>
+                        <small>Add a dish</small>
                     `;
-                });
-                container.innerHTML = html;
+                    container.appendChild(placeholder);
+                }
             }
-
-            function setupFormHandler() {
-                const form = document.getElementById('dishForm');
-                if (!form) return;
-
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    const name = document.getElementById('dishName').value.trim();
-                    const region = document.getElementById('dishRegion').value;
-                    const taste = document.getElementById('dishTaste').value.trim();
-                    const desc = document.getElementById('dishDesc').value.trim();
-                    const price = document.getElementById('dishPrice').value.trim();
-                    const currency = document.getElementById('dishCurrency').value;
-
-                    if (!name || !desc || !price) {
-                        alert('Please fill in all required fields (*)');
-                        return;
-                    }
-
-                    const newDish = { name, region, taste, desc, price, currency };
-                    const dishes = loadDishes();
-                    dishes.unshift(newDish);
-                    saveDishes(dishes);
-                    renderDishList();
-
-                    document.getElementById('dishName').value = '';
-                    document.getElementById('dishDesc').value = '';
-                    document.getElementById('dishPrice').value = '';
-                    document.getElementById('dishRegion').value = 'African (general)';
-                    document.getElementById('dishTaste').value = 'spicy, peanut';
-                    document.getElementById('dishCurrency').value = 'KSH(ksh)';
-
-                    alert('Dish added to Bangola kingdom');
-                });
+        }
+        
+        // Handle form submission
+        document.getElementById('add-dish-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const dish = {
+                id: Date.now(),
+                name: document.getElementById('dish-name').value,
+                description: document.getElementById('dish-description').value,
+                tradition: document.getElementById('dish-traditions').value || 'Traditional dish',
+                occasion: document.getElementById('dish-occasion').value,
+                price: document.getElementById('dish-price').value,
+                currency: document.getElementById('dish-currency').value,
+                dateAdded: new Date().toISOString()
+            };
+            
+            console.log('Saving dish:', dish); // Debug log
+            
+            // Save to localStorage
+            if (saveDish(dish)) {
+                alert('Dish added successfully!');
+                this.reset();
+                loadRecentlyAdded(); // Refresh the recently added section
+            } else {
+                alert('Error adding dish. Please try again.');
             }
-
-            renderDishList();
-            setupFormHandler();
-        })();
+        });
+        
+        // Load recently added dishes when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Add dish page loaded');
+            loadRecentlyAdded();
+            
+            // Set active nav if function exists
+            if (typeof setActiveNav === 'function') {
+                setActiveNav('add-dish.html');
+            }
+        });
     </script>
 </body>
 </html>

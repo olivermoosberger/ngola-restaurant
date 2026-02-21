@@ -3,505 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >Bangola Kingdom African Quisines</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="styles2.css">
-<style>
-    * {
-            margin: 0;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #faf3e8;
-            background-image: radial-gradient(circle at 10% 30%, rgba(230, 200, 170, 0.15) 0%, transparent 30%);
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            color: #bb9003;
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem 1rem;
-        }
-
-        .kingdom-card {
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(255, 250, 240, 0.9);
-            backdrop-filter: blur(2px);
-            border-radius: 3rem 3rem 2rem 2rem;
-            box-shadow: 0 25px 45px -12px rgba(80, 40, 10, 0.35);
-            overflow: hidden;
-            border: 1px solid #e7d5bd;
-        }
-
-        .header-bango {
-            background: #7b4f35;
-            background: linear-gradient(135deg, #6d4c3b 0%, #8b5e3c 100%);
-            padding: 1.6rem 2rem;
-            border-bottom: 4px solid #e2b48c;
-            position: relative;
-        }
-
-        .header-bango::before {
-            content: "✱ ✱ ✱";
-            letter-spacing: 8px;
-            font-size: 5rem;
-            color: #ffde9e;
-            position: absolute;
-            bottom: 8px;
-            right: 2rem;
-            opacity: 0.5;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            font-size: 2.8rem;
-            color: #f9d79f;
-            filter: drop-shadow(2px 4px 4px #3e2c1e);
-        }
-
-        .logo-text {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #ffefd1;
-            text-shadow: 3px 3px 0 #4f3723, 1px 5px 10px rgba(0,0,0,0.3);
-        }
-
-        .nav-africa {
-            display: flex;
-            gap: 2rem;
-            margin-left: auto;
-            margin-top: 0.6rem;
-            font-weight: 600;
-        }
-
-        .nav-africa a {
-            color: #fff6e0;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            background: rgba(44, 28, 16, 0.25);
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .nav-africa a:hover {
-            background: #cdaa7b;
-            color: #2b1b0f;
-            transform: translateY(-2px);
-        }
-
-        /* main content area */
-        .home-content {
-            padding: 2.5rem;
-        }
-
-        /* === YOUR EXACT TEXT STYLED === */
-        .main-heading {
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: #6d4a2e;
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-
-        .main-heading i {
-            color: #b47b54;
-            font-size: 2.5rem;
-            margin: 0 0.8rem;
-        }
-
-        .gem-subheading {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #876d52;
-            margin: 1rem 0 2.5rem 0;
-            border-bottom: 2px dashed #dabd9b;
-            padding-bottom: 1.5rem;
-        }
-
-        .gem-subheading i {
-            color: #b47b54;
-            margin: 0 0.5rem;
-        }
-
-        /* dish feature grid — like a menu highlight */
-        .dish-showcase {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .dish-item-card {
-            background: #fffcf5;
-            border-radius: 40px;
-            padding: 1.8rem 2.2rem;
-            border-left: 10px solid #cfa776;
-            box-shadow: 0 8px 0 #8f6a48, 0 12px 25px -8px #ac8b6b;
-            transition: transform 0.2s;
-        }
-
-        .dish-item-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .dish-name {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #3d2c1b;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 0.8rem;
-        }
-
-        .dish-name i {
-            color: #a56f41;
-            font-size: 1.8rem;
-        }
-
-        .dish-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 1rem 0 0.8rem 0;
-            font-size: 1.1rem;
-        }
-
-        .meta-tag {
-            background: #f3e2d2;
-            padding: 0.4rem 1.4rem;
-            border-radius: 40px;
-            font-weight: 600;
-            color: #4f3a27;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .meta-tag i {
-            color: #a57148;
-        }
-
-        .dish-description {
-            font-size: 1.2rem;
-            color: #2f241b;
-            background: #fff6ea;
-            padding: 1.2rem 1.8rem;
-            border-radius: 30px;
-            margin: 1rem 0 0.5rem 0;
-            border: 1px solid #edd0b5;
-            font-style: italic;
-        }
-
-        .dish-description i {
-            color: #b47b54;
-            margin-right: 0.8rem;
-        }
-
-        /* a la your bullet list but styled with cards */
-        .feature-list {
-            background: #eedbcb;
-            border-radius: 50px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            font-size: 1.3rem;
-            padding: 0.9rem 1.5rem;
-            background: #fffcf0;
-            border-radius: 60px;
-            margin-bottom: 1rem;
-            box-shadow: 0 3px 0 #b58f69;
-        }
-
-        .feature-item i {
-            width: 2rem;
-            color: #8a623f;
-            font-size: 1.6rem;
-        }
-
-        .feature-item strong {
-            color: #5b3d25;
-            min-width: 170px;
-        }
-
-        .example {
-            color: #7e5b3b;
-            font-style: italic;
-        }
-
-        
-        .description-block {
-            background: #ed9c39;
-            border-radius: 40px;
-            padding: 2rem 2.5rem;
-            margin: 2.5rem 0 1.5rem;
-            border: 3px solid #dbb692;
-            box-shadow: inset 0 2px 8px #ffe1c6;
-        }
-
-        .description-block h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #6b482c;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .description-block h3 i {
-            font-size: 2rem;
-            color: #b47b54;
-        }
-
-        .description-text {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: #2e1f12;
-            padding-left: 1rem;
-            border-left: 6px solid #b47b54;
-            padding: 1rem 2rem;
-            background: #fff9f0;
-            border-radius: 30px;
-        }
-
-        .description-text i {
-            color: #b47b54;
-            margin-right: 0.8rem;
-        }
-
-    
-        .recent-section {
-            background: #e9daca;
-            background: linear-gradient(to bottom, #f1e4d6, #dccbb8);
-            padding: 2rem 2.5rem;
-            border-top: 2px dashed #b48b65;
-            margin-top: 2rem;
-            border-radius: 50px 50px 0 0;
-        }
-
-        .recent-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #8a5017;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .recent-title i {
-            background: #7b5a41;
-            color: #feeac2;
-            padding: 0.6rem;
-            border-radius: 50%;
-        }
-
-        /* localStorage dish list */
-        .dish-list {
-            background: #fffcf3;
-            border-radius: 30px;
-            padding: 1.5rem 1.8rem;
-            margin: 1rem 0 1.2rem 0;
-            border-left: 8px solid #c3996b;
-            box-shadow: 0 5px 0 #ac8a68;
-        }
-
-        .dish-item {
-            padding: 0.8rem 1rem;
-            border-bottom: 1px dashed #dbbc96;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .dish-item:last-child {
-            border-bottom: none;
-        }
-
-        .dish-info {
-            font-weight: 600;
-            color: #3b2c1b;
-        }
-
-        .dish-price {
-            background: #b4885b;
-            color: #fff0db;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-weight: 600;
-        }
-
-        .empty-message {
-            color: #917b64;
-            font-style: italic;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .localstorage-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background: #b38e6d;
-            color: #281e14;
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-weight: 500;
-            width: fit-content;
-            margin: 1.2rem auto 0.5rem;
-            border: 2px solid #e5be96;
-        }
-
-        .footer-heritage {
-            background: #3f2f21;
-            color: #ecdcc9;
-            padding: 1.8rem 2rem;
-            text-align: center;
-            font-size: 1.2rem;
-            border-top: 6px solid #ab7e58;
-        }
-
-        .copyright {
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-</style>
+    <title>Bangola Restaurant</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Or if using the nested CSS: href="js/js/styles2.css" -->
 </head>
 
 <body>
     <header>
-        <div class="header-container" style="color: rgb(68, 54, 1);" 
-         >Bangola Exquisite African Restaurant</div>
- <nav>
-    <ul>
-        <li><a href="index.html" class="nav-link active" >Home</a></li>
-        <li><a href="menu.html" class="nav-link" >Menu</a></li>
-        <li><a href="add-dish.html" class="nav-link" >Add Dish</a></li>
-    
-    </ul>
- </nav>
+        <div class="header-container" style="color: rgb(68, 54, 1);">Bangola Exquisite African Restaurant</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="add-dish.html" class="nav-link">Add Dish</a></li>
+            </ul>
+        </nav>
     </header>
+    
     <main>
-        <div class="flex-wrap" >
-   <section>
-    <h1>
-        Heritage of Bangola Kingdom African Quisines 
-    </h1> 
-    <p>Explore the rich culinary traditions of the Bangola Kingdom, a vibrant blend of African heritage and exquisite flavors.</p>
-   </section>
-
-   <section>
-    <h2 style="color: rgb(148, 83, 3);" >Traditional Dishes And Modern Flavors</h2>
-    <div class="dish-container" id="dish-container">
-        <div class="food-card" >
-<h3>
-    Nyama Choma: A beloved dish of grilled meat, often marinated with a blend of spices and kachumbari, reflecting the bold flavors of the Bangola Kingdom.
-</h3>
-  <img src="https://static.vecteezy.com/system/resources/previews/059/782/812/large_2x/tanzanian-nyama-choma-grilled-meat-served-with-ugali-and-kachumbari-fresh-tomato-and-onion-salad-placed-on-a-rustic-wooden-platter-with-bright-sunlight-photo.jpeg" alt="Nyama Choma" width="750"  >   <p>
-    This  dish is a staple in the Bangola Kingdom, showcasing the rich culinary heritage of the region. The meat is typically cooked over an open flame, infusing it with a smoky aroma and tender texture that is cherished by locals and visitors alike.
-</p>
-         <span class="price" >750ksh </span>
-        </div> 
-        <div class="food-card" >
-<h3>
-Mahamri and mbaazi za kupaka: A delightful combination of sweet coconut-flavored doughnuts (mahamri) and creamy pigeon peas (mbaazi za kupaka), offering a unique blend of flavors that is both comforting and satisfying.
-</h3>
-  <img src="https://old.lifeinmombasa.com/wp-content/uploads/2016/03/DSC_0266.jpg" alt="Mahamri and Mbaazi za kupaka" width="750" >   <p>
-     It's a favorite among children and adults alike in the Bangola Kingdom.jpeg
-</p>
-         <span class="price" >500ksh </span>
-        </div> <div class="food-card" > <h3>
-            Jamaican jerk chicken: A flavorful dish that has found its way into the culinary repertoire of the Bangola Kingdom, featuring marinated chicken infused with a blend of spices and herbs, grilled to perfection for a taste that is both spicy and aromatic.
-        </h3> <img src="https://www.sandravalvassori.com/wp-content/uploads/2024/06/Jerk-Chicken-2349-2.jpg" alt="Jerk-Chicken" width="650" >
-<p>
-This dish reflects the global influences that have shaped the culinary landscape of the Bangola Kingdom, offering a delicious fusion of flavors that is sure to tantalize the taste buds of food enthusiasts.
-</p>
-<span class="price" >1200ksh </span>
-        </div> 
-        <div class="food-card" > <h3>poulet yassa</h3> <img src="https://soulfood.nl/wp-content/uploads/2020/06/yassa.jpg" alt="Poulet-Yassa" width="700">
-             <p>
-Poulet Yassa is a beloved dish in the Bangola Kingdom, featuring marinated chicken cooked with onions, lemon juice, and a blend of spices. This flavorful dish is often served with rice or couscous, making it a hearty and satisfying meal that reflects the rich culinary heritage of the region.
-</p>
-<span class="price" >800ksh </span>
-        </div>  
-        <div class="food-card" >
-<h3>
-    Potjiekos: A traditional South African stew that has become a popular dish in the Bangola Kingdom, made with a variety of meats, vegetables, and spices, slow-cooked in a cast-iron pot over an open flame for a rich and hearty flavor.
-</h3>  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/The_Potjie_is_ready.JPG/500px-The_Potjie_is_ready.JPG" alt="Potjiekos" width="500">   <p>
-Potjiekos is a beloved dish in the Bangola Kingdom, often enjoyed during communal gatherings and celebrations. The slow-cooking process allows the flavors to meld together, creating a delicious and comforting meal that is cherished by locals and visitors alike.
-</p>
-         <span class="price" >900ksh </span>
-        </div>
-        <!-- Localstorage section -->  
-        <section class="local-dishes-section" >
-            <span class="menu-chip" >From the add-dish page</span>
-            <h2>
-                Kingdom community dishes
-            </h2>
-            <div id="local-dishes-home" class="card-grid">
-
+        <div class="flex-wrap">
+            <section>
+                <h1>Heritage of Bangola Kingdom African Quisines</h1> 
+                <p>Explore the rich culinary traditions of the Bangola Kingdom, a vibrant blend of African heritage and exquisite flavors.</p>
             </div>
-        </section>
-   </section>
+            
+            </section>
+
+            <section>
+                <h2 style="color: rgb(148, 83, 3);">Traditional Dishes And Modern Flavors</h2>
+                <div class="dish-container" id="dish-container">
+                    <div class="food-card">
+                        <h3>Nyama Choma: A beloved dish of grilled meat, often marinated with a blend of spices and kachumbari, reflecting the bold flavors of the Bangola Kingdom.</h3>
+                        <img src="https://static.vecteezy.com/system/resources/previews/059/782/812/large_2x/tanzanian-nyama-choma-grilled-meat-served-with-ugali-and-kachumbari-fresh-tomato-and-onion-salad-placed-on-a-rustic-wooden-platter-with-bright-sunlight-photo.jpeg" alt="Nyama Choma" width="750">
+                        <p>This dish is a staple in the Bangola Kingdom, showcasing the rich culinary heritage of the region. The meat is typically cooked over an open flame, infusing it with a smoky aroma and tender texture that is cherished by locals and visitors alike.</p>
+                        <span class="price">750ksh</span>
+                    </div>
+                    
+                    <div class="food-card">
+                        <h3>Mahamri and mbaazi za kupaka: A delightful combination of sweet coconut-flavored doughnuts (mahamri) and creamy pigeon peas (mbaazi za kupaka), offering a unique blend of flavors that is both comforting and satisfying.</h3>
+                        <img src="https://old.lifeinmombasa.com/wp-content/uploads/2016/03/DSC_0266.jpg" alt="Mahamri and Mbaazi za kupaka" width="750">
+                        <p>It's a favorite among children and adults alike in the Bangola Kingdom.</p>
+                        <span class="price">500ksh</span>
+                    </div>
+                    
+                    <div class="food-card">
+                        <h3>Jamaican jerk chicken: A flavorful dish that has found its way into the culinary repertoire of the Bangola Kingdom, featuring marinated chicken infused with a blend of spices and herbs, grilled to perfection for a taste that is both spicy and aromatic.</h3>
+                        <img src="https://www.sandravalvassori.com/wp-content/uploads/2024/06/Jerk-Chicken-2349-2.jpg" alt="Jerk-Chicken" width="650">
+                        <p>This dish reflects the global influences that have shaped the culinary landscape of the Bangola Kingdom, offering a delicious fusion of flavors that is sure to tantalize the taste buds of food enthusiasts.</p>
+                        <span class="price">1200ksh</span>
+                    </div>
+                    
+                    <div class="food-card">
+                        <h3>poulet yassa</h3>
+                        <img src="https://soulfood.nl/wp-content/uploads/2020/06/yassa.jpg" alt="Poulet-Yassa" width="700">
+                        <p>Poulet Yassa is a beloved dish in the Bangola Kingdom, featuring marinated chicken cooked with onions, lemon juice, and a blend of spices. This flavorful dish is often served with rice or couscous, making it a hearty and satisfying meal that reflects the rich culinary heritage of the region.</p>
+                        <span class="price">800ksh</span>
+                    </div>
+                    
+                    <div class="food-card">
+                        <h3>Potjiekos: A traditional South African stew that has become a popular dish in the Bangola Kingdom, made with a variety of meats, vegetables, and spices, slow-cooked in a cast-iron pot over an open flame for a rich and hearty flavor.</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/The_Potjie_is_ready.JPG/500px-The_Potjie_is_ready.JPG" alt="Potjiekos" width="500">
+                        <p>Potjiekos is a beloved dish in the Bangola Kingdom, often enjoyed during communal gatherings and celebrations. The slow-cooking process allows the flavors to meld together, creating a delicious and comforting meal that is cherished by locals and visitors alike.</p>
+                        <span class="price">900ksh</span>
+                    </div>
+                </div>
+                
+                <!-- Localstorage section -->  
+                <section class="local-dishes-section">
+                    <span class="menu-chip">From the add-dish page</span>
+                    <h2>Kingdom community dishes</h2>
+                    <div id="local-dishes-home" class="card-grid"></div>
+                </section>
+            </section>
         </div>
     </main>
+    
     <footer>
-        <p>
-            Bangola Kingdom Restaurant - taste from every bite tells a story
-        </p>
-        <p>
-             2026 Bangola Kingdom Restaurant. All rights reserved.
-        </p>
+        <p>Bangola Kingdom Restaurant - taste from every bite tells a story</p>
+        <p>2026 Bangola Kingdom Restaurant. All rights reserved.</p>
     </footer>
-    <script type="module">
-        import { renderDishes, setActiveNav } from './js/ui.js';
-        import { saveDish } from './js/storage.js';
-        
-        // Add a test dish if none exist
-        const dishes = JSON.parse(localStorage.getItem('dishes') || '[]');
-        if (dishes.length === 0) {
-            saveDish({
-                name: 'Biriyani',
-                description: 'A delicious blend of spices and flavors',
-                country: 'African',
-                price: '15.99'
-            });
-        }
-        
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/add-dish.js"></script>
+    
+    <script>
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            renderDishes();
-            setActiveNav('#home');
-        }); >
-</script>
-    <script type="module" src="js/storage.js" ></script>
-    <script type="module" src="js/ui.js" ></script>
-    <script type="module" >import { renderDishes } from './js/ui.js'; renderDishes();</script>
-    <script src="js/home.js" ></script>
+            // Check if loadDishes function exists (from storage.js)
+            if (typeof loadDishes === 'function') {
+                const dishes = loadDishes() || [];
+                
+                if (dishes.length === 0 && typeof saveDish === 'function') {
+                    saveDish({
+                        name: 'Biriyani',
+                        description: 'A delicious blend of spices and flavors',
+                        country: 'African',
+                        price: '15.99'
+                    });
+                }
+            }
+            
+            // Call renderDishes if it exists (from home.js)
+            if (typeof renderDishes === 'function') {
+                renderDishes();
+            }
+            
+            // Call setActiveNav if it exists (from home.js)
+            if (typeof setActiveNav === 'function') {
+                setActiveNav('#home');
+            }
+        });
+    </script>
 </body>
 </html>
