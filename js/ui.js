@@ -8,8 +8,7 @@ function createDishCard(dish, index) {
         <p>${dish.description || 'No description available'}</p>
         <p><small>Country: ${dish.country || 'Unknown'}</small></p>
         <span class="price">$${dish.price || '0.00'}</span>
-        ${index !== undefined ? `<button onclick="deleteDish(${index})" class="delete-btn">Delete</button>` : ''}
-    `;
+        ${index !== undefined ? 
     
     return card;
 }
