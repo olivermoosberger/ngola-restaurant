@@ -21,7 +21,7 @@
     <main>
         <div class="flex-wrap" > 
             <h1>Full Menu</h1>
-            <div class="card-grid" id="menu-static-grid">
+            <div id="menu-container" id="dishes-grid">
                
                <div class="food-card" >
                 <h3>
@@ -89,6 +89,10 @@ Fufu and Egusi Soup is a beloved dish in the Bangola Kingdom, showcasing the ric
 
 <script src="js/storage.js"></script>
 <script src="js/ui.js" ></script>
-<script src="js/menu.js" ></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+            renderAllDishes('menu-container');
+        });
+</script>
 </body>
 </html>

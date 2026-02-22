@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="dish-occasion">Occasion:</label>
                     <select id="dish-occasion" name="dish-occasion">
-                        <option value="Any occasion">Any occasion</option>
+                        <option value="Any">Any occasion</option>
                         <option value="Wedding">Wedding</option>
                         <option value="Festival">Festival</option>
                         <option value="Daily meal">Daily meal</option>
@@ -54,7 +54,7 @@
                 
                 <div class="form-row">
                     <div class="form-group half">
-                        <label for="dish-price">PRICE (WITH CURRENCY):</label>
+                        <label for="dish-price">PRICE:</label>
                         <input type="text" id="dish-price" name="dish-price" 
                             placeholder="e.g. 85, 400" required>
                     </div>
@@ -73,21 +73,16 @@
                 </div>
                 
                 <div class="price-examples">
-                    <small>Examples: R85, KSh 400, BTC (Bitcoin) ₿ 0.00015, $12.50</small>
+                    <small>Examples: R85, KSh 400, ₿ 0.00015, $12.50</small>
                 </div>
                 
-                <button type="submit" class="submit-btn">Add your dish</button>
+                <button type="submit" class="submit-btn">Add your dish to the kingdom</button>
             </form>
             
-            <!-- Recently Added Section -->
-            
-                <h2>Recently added</h2>
-                <div id="recently-added-dishes" class="mini-grid">
-                    <!-- Dishes will be loaded here -->
-                    <p class="no-dishes">0 dishes saved</p>
-                </div>
-                <div class="kingdom-quote">
-                    <p class="quote-text">"Bangola Kingdom — taste the motherland, every bite tells a story."</p>
+            <div class="recent-preview">
+                <h3>Recently added</h3>
+                <div id="preview-dishes" class="mini-grid">
+                    <!-- Preview of recent dishes will show here -->
                 </div>
             </div>
         </div>
@@ -100,113 +95,85 @@
 
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>
-    <script src="js/home.js"></script>
     <script>
-        // Function to load and display recently added dishes
-        function loadRecentlyAdded() {
-            const container = document.getElementById('recently-added-dishes');
-            if (!container) return;
+        // Preview recent dishes on add page
+        function showRecentPreview() {
+            const preview = document.getElementById('preview-dishes');
+            if (!preview) return;
             
-            // Clear container
-            container.innerHTML = '';
-            
-            // Load dishes from localStorage
             const dishes = loadDishes();
-            console.log('Loaded dishes:', dishes); // Debug log
+            const recent = dishes.slice(-3).reverse(); // Show 3 most recent
             
-            if (!dishes || dishes.length === 0) {
-                container.innerHTML = '<p class="no-dishes">0 dishes saved</p>';
+            if (recent.length === 0) {
+                preview.innerHTML = '<p class="no-dishes">No dishes yet. Add the first one!</p>';
                 return;
             }
             
-            // Get the 3 most recent dishes (sort by id which is timestamp)
-            const recentDishes = [...dishes].sort((a, b) => b.id - a.id).slice(0, 3);
-            
-            // Display each dish
-            recentDishes.forEach(dish => {
+            preview.innerHTML = '';
+            recent.forEach(dish => {
                 const card = document.createElement('div');
                 card.className = 'mini-card';
                 
-                // Format price with currency symbol
-                let priceDisplay = '';
-                switch(dish.currency) {
-                    case 'BTC':
-                        priceDisplay = `₿ ${dish.price}`;
-                        break;
-                    case 'KES':
-                        priceDisplay = `KSh ${dish.price}`;
-                        break;
-                    case 'ZAR':
-                        priceDisplay = `R ${dish.price}`;
-                        break;
-                    case 'USD':
-                        priceDisplay = `$${dish.price}`;
-                        break;
-                    case 'NGN':
-                        priceDisplay = `₦ ${dish.price}`;
-                        break;
-                    case 'GHS':
-                        priceDisplay = `₵ ${dish.price}`;
-                        break;
-                    default:
-                        priceDisplay = `$${dish.price}`;
-                }
+                let currencySymbol = '';
+                if (dish.currency === 'BTC') currencySymbol = '₿';
+                else if (dish.currency === 'KES') currencySymbol = 'KSh';
+                else if (dish.currency === 'ZAR') currencySymbol = 'R';
+                else if (dish.currency === 'USD') currencySymbol = '$';
                 
                 card.innerHTML = `
-                    <strong>${dish.name || 'Untitled'}</strong>
-                    <span>${priceDisplay}</span>
-                    <small>${dish.occasion || 'Any occasion'}</small>
+                    <strong>${dish.name}</strong>
+                    <span>${currencySymbol} ${dish.price}</span>
                 `;
-                container.appendChild(card);
+                preview.appendChild(card);
             });
-            
-            // If less than 3 dishes, add placeholder cards
-            if (dishes.length < 3) {
-                for (let i = dishes.length; i < 3; i++) {
-                    const placeholder = document.createElement('div');
-                    placeholder.className = 'mini-card placeholder';
-                    placeholder.innerHTML = `
-                        <strong>—</strong>
-                        <span>—</span>
-                        <small>Add a dish</small>
-                    `;
-                    container.appendChild(placeholder);
-                }
-            }
         }
         
-        // Handle form submission
-        document.getElementById('add-dish-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const dish = {
-                id: Date.now(),
-                name: document.getElementById('dish-name').value,
-                description: document.getElementById('dish-description').value,
-                tradition: document.getElementById('dish-traditions').value || 'Traditional dish',
-                occasion: document.getElementById('dish-occasion').value,
-                price: document.getElementById('dish-price').value,
-                currency: document.getElementById('dish-currency').value,
-                dateAdded: new Date().toISOString()
-            };
-            
-            console.log('Saving dish:', dish); // Debug log
-            
-            // Save to localStorage
-            if (saveDish(dish)) {
-                alert('Dish added successfully!');
-                this.reset();
-                loadRecentlyAdded(); // Refresh the recently added section
-            } else {
-                alert('Error adding dish. Please try again.');
-            }
-        });
-        
-        // Load recently added dishes when page loads
+        // Add dish form handler
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Add dish page loaded');
-            loadRecentlyAdded();
+            
+            // Show preview
+            showRecentPreview();
+            
+            const form = document.getElementById('add-dish-form');
+            
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    // Get form values
+                    const dish = {
+                        name: document.getElementById('dish-name')?.value || '',
+                        description: document.getElementById('dish-description')?.value || '',
+                        tradition: document.getElementById('dish-traditions')?.value || 'Traditional dish',
+                        occasion: document.getElementById('dish-occasion')?.value || 'Any',
+                        price: document.getElementById('dish-price')?.value || '',
+                        currency: document.getElementById('dish-currency')?.value || 'USD'
+                    };
+                    
+                    // Validate
+                    if (!dish.name || !dish.description || !dish.price) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Save dish
+                    if (saveDish(dish)) {
+                        alert('✨ Dish added successfully! Thank you for sharing with the kingdom.');
+                        form.reset();
+                        // Update preview
+                        showRecentPreview();
+                        // Optional: redirect after short delay
+                        setTimeout(() => {
+                            if (confirm('Go to home page to see all dishes?')) {
+                                window.location.href = 'index.html';
+                            }
+                        }, 500);
+                    } else {
+                        alert('Error adding dish. Please try again.');
+                    }
+                });
+            }
             
             // Set active nav if function exists
             if (typeof setActiveNav === 'function') {

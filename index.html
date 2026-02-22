@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangola Restaurant</title>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;">
     <link rel="stylesheet" href="styles.css">
-   
 </head>
 
 <body>
@@ -26,12 +25,10 @@
             <section>
                 <h1>Heritage of Bangola Kingdom African Quisines</h1> 
                 <p>Explore the rich culinary traditions of the Bangola Kingdom, a vibrant blend of African heritage and exquisite flavors.</p>
-            </div>
-            
             </section>
 
             <section>
-                <h2 style="color: rgb(235, 169, 88);">Traditional Dishes And Modern Flavors</h2>
+                <h2 style="color: rgb(148, 83, 3);">Traditional Dishes And Modern Flavors</h2>
                 <div class="dish-container" id="dish-container">
                     <div class="food-card">
                         <h3>Nyama Choma: A beloved dish of grilled meat, often marinated with a blend of spices and kachumbari, reflecting the bold flavors of the Bangola Kingdom.</h3>
@@ -48,7 +45,7 @@
                     </div>
                     
                     <div class="food-card">
-                        <h3>Jamaican Jerk chicken: A flavorful dish that has found its way into the culinary repertoire of the Bangola Kingdom, featuring marinated chicken infused with a blend of spices and herbs, grilled to perfection for a taste that is both spicy and aromatic.</h3>
+                        <h3>Jamaican jerk chicken: A flavorful dish that has found its way into the culinary repertoire of the Bangola Kingdom, featuring marinated chicken infused with a blend of spices and herbs, grilled to perfection for a taste that is both spicy and aromatic.</h3>
                         <img src="https://www.sandravalvassori.com/wp-content/uploads/2024/06/Jerk-Chicken-2349-2.jpg" alt="Jerk-Chicken" width="650">
                         <p>This dish reflects the global influences that have shaped the culinary landscape of the Bangola Kingdom, offering a delicious fusion of flavors that is sure to tantalize the taste buds of food enthusiasts.</p>
                         <span class="price">1200ksh</span>
@@ -84,7 +81,7 @@
         <p>2026 Bangola Kingdom Restaurant. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts - CORRECT PATH after cleanup -->
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/home.js"></script>
@@ -93,7 +90,17 @@
     <script>
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            // Check if loadDishes function exists (from storage.js)
+            console.log('Page loaded, checking scripts...');
+            
+            // Check if scripts are loaded
+            console.log('Scripts status:', {
+                loadDishes: typeof loadDishes,
+                saveDish: typeof saveDish,
+                renderDishes: typeof renderDishes,
+                setActiveNav: typeof setActiveNav
+            });
+            
+            // Initialize dishes if needed
             if (typeof loadDishes === 'function') {
                 const dishes = loadDishes() || [];
                 
@@ -101,18 +108,23 @@
                     saveDish({
                         name: 'Biriyani',
                         description: 'A delicious blend of spices and flavors',
-                        country: 'African',
-                        price: '15.99'
+                        country: 'Kenyan',
+                        price: '0.000125 BTC'
                     });
+                    console.log('Sample dish added');
                 }
+            } else {
+                console.warn('loadDishes function not found - check if storage.js loaded correctly');
             }
             
-            // Call renderDishes if it exists (from home.js)
+            // Render dishes
             if (typeof renderDishes === 'function') {
                 renderDishes();
+            } else {
+                console.warn('renderDishes function not found - check if home.js loaded correctly');
             }
             
-            // Call setActiveNav if it exists (from home.js)
+            // Set active navigation
             if (typeof setActiveNav === 'function') {
                 setActiveNav('#home');
             }
