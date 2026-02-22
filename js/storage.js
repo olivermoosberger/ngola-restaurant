@@ -13,7 +13,7 @@ function loadDishes() {
 function saveDish(dish) {
     try {
         const dishes = loadDishes();
-        // Add timestamp and ID
+      
         dish.id = Date.now();
         dish.dateAdded = new Date().toISOString();
         dishes.push(dish);
