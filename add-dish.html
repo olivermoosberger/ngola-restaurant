@@ -95,91 +95,127 @@
 
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>
-    <script>
-        // Preview recent dishes on add page
-        function showRecentPreview() {
-            const preview = document.getElementById('preview-dishes');
-            if (!preview) return;
+  <script>
+    // Function to load and display recently added dishes
+    window.loadRecentlyAdded = function() {
+        const container = document.getElementById('recently-added-dishes');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        try {
+            const dishes = JSON.parse(localStorage.getItem('bangolaDishes')) || [];
+            console.log('Loading recent dishes:', dishes.length);
             
-            const dishes = loadDishes();
-            const recent = dishes.slice(-3).reverse(); // Show 3 most recent
-            
-            if (recent.length === 0) {
-                preview.innerHTML = '<p class="no-dishes">No dishes yet. Add the first one!</p>';
+            if (!dishes || dishes.length === 0) {
+                container.innerHTML = '<p class="no-dishes">0 dishes saved</p>';
                 return;
             }
             
-            preview.innerHTML = '';
-            recent.forEach(dish => {
+            // Get the 3 most recent dishes
+            const recentDishes = [...dishes].sort((a, b) => b.id - a.id).slice(0, 3);
+            
+            recentDishes.forEach(dish => {
                 const card = document.createElement('div');
                 card.className = 'mini-card';
                 
-                let currencySymbol = '';
-                if (dish.currency === 'BTC') currencySymbol = '₿';
-                else if (dish.currency === 'KES') currencySymbol = 'KSh';
-                else if (dish.currency === 'ZAR') currencySymbol = 'R';
-                else if (dish.currency === 'USD') currencySymbol = '$';
+                // Format price with currency
+                let priceDisplay = '';
+                switch(dish.currency) {
+                    case 'BTC':
+                        priceDisplay = `₿ ${dish.price} BTC`;
+                        break;
+                    case 'KES':
+                        priceDisplay = `KSh ${dish.price}`;
+                        break;
+                    case 'ZAR':
+                        priceDisplay = `R ${dish.price}`;
+                        break;
+                    case 'USD':
+                        priceDisplay = `$${dish.price} USD`;
+                        break;
+                    case 'NGN':
+                        priceDisplay = `₦ ${dish.price}`;
+                        break;
+                    case 'GHS':
+                        priceDisplay = `₵ ${dish.price}`;
+                        break;
+                    default:
+                        priceDisplay = `$${dish.price}`;
+                }
                 
                 card.innerHTML = `
-                    <strong>${dish.name}</strong>
-                    <span>${currencySymbol} ${dish.price}</span>
+                    <strong>${dish.name || 'Untitled'}</strong>
+                    <span>${priceDisplay}</span>
+                    <small>${dish.occasion || 'Any occasion'}</small>
+                    <button onclick="deleteDish(${dish.id}); return false;" class="mini-delete">×</button>
                 `;
-                preview.appendChild(card);
+                container.appendChild(card);
+            });
+            
+        } catch (error) {
+            console.error('Error loading recent dishes:', error);
+            container.innerHTML = '<p class="no-dishes">Error loading dishes</p>';
+        }
+    };
+    
+    // Handle form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Add dish page loaded');
+        
+        const form = document.getElementById('add-dish-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const dish = {
+                    id: Date.now(), // Use timestamp as unique ID
+                    name: document.getElementById('dish-name')?.value || '',
+                    description: document.getElementById('dish-description')?.value || '',
+                    tradition: document.getElementById('dish-traditions')?.value || 'Traditional dish',
+                    occasion: document.getElementById('dish-occasion')?.value || 'Any occasion',
+                    price: document.getElementById('dish-price')?.value || '',
+                    currency: document.getElementById('dish-currency')?.value || 'USD',
+                    dateAdded: new Date().toISOString()
+                };
+                
+                console.log('Saving dish:', dish);
+                
+                try {
+                    // Get existing dishes
+                    let dishes = JSON.parse(localStorage.getItem('bangolaDishes')) || [];
+                    
+                    // Add new dish
+                    dishes.push(dish);
+                    
+                    // Save back to localStorage
+                    localStorage.setItem('bangolaDishes', JSON.stringify(dishes));
+                    
+                    alert('Dish added successfully!');
+                    form.reset();
+                    
+                    // Refresh displays
+                    loadRecentlyAdded();
+                    if (typeof renderLocalDishes === 'function') {
+                        renderLocalDishes('local-dishes-home');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error saving dish:', error);
+                    alert('Error adding dish. Please try again.');
+                }
             });
         }
         
-        // Add dish form handler
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Add dish page loaded');
-            
-            // Show preview
-            showRecentPreview();
-            
-            const form = document.getElementById('add-dish-form');
-            
-            if (form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    
-                    // Get form values
-                    const dish = {
-                        name: document.getElementById('dish-name')?.value || '',
-                        description: document.getElementById('dish-description')?.value || '',
-                        tradition: document.getElementById('dish-traditions')?.value || 'Traditional dish',
-                        occasion: document.getElementById('dish-occasion')?.value || 'Any',
-                        price: document.getElementById('dish-price')?.value || '',
-                        currency: document.getElementById('dish-currency')?.value || 'USD'
-                    };
-                    
-                    // Validate
-                    if (!dish.name || !dish.description || !dish.price) {
-                        alert('Please fill in all required fields');
-                        return;
-                    }
-                    
-                    // Save dish
-                    if (saveDish(dish)) {
-                        alert('✨ Dish added successfully! Thank you for sharing with the kingdom.');
-                        form.reset();
-                        // Update preview
-                        showRecentPreview();
-                        // Optional: redirect after short delay
-                        setTimeout(() => {
-                            if (confirm('Go to home page to see all dishes?')) {
-                                window.location.href = 'index.html';
-                            }
-                        }, 500);
-                    } else {
-                        alert('Error adding dish. Please try again.');
-                    }
-                });
-            }
-            
-            // Set active nav if function exists
-            if (typeof setActiveNav === 'function') {
-                setActiveNav('add-dish.html');
-            }
-        });
-    </script>
+        // Load recently added dishes
+        loadRecentlyAdded();
+        
+        // Set active nav if function exists
+        if (typeof setActiveNav === 'function') {
+            setActiveNav('add-dish.html');
+        }
+    });
+</script>
 </body>
 </html>
